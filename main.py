@@ -1,13 +1,8 @@
-#!/usr/bin/env python3.13
-"""Entrypoint for the news-image-20261120 v2.1 entry.
+"""Grading entrypoint for the news-image-20261120 entry.
 
-Standard library only. The front page is rendered at build time by
-draw.py and shipped in this repository as entry.png; this script only
-carries that finished image into the directory the grader reads.
-
-The split is deliberate: the grading container runs Python with the
-standard library alone, so nothing here imports Pillow or any other
-third-party package.
+Standard library only. The grading container installs nothing, so this
+file copies the pre-rendered entry.png into the output directory and
+verifies the copy byte for byte. It never imports the renderer.
 """
 
 import os
@@ -15,32 +10,22 @@ import shutil
 import sys
 
 
-def _source_path():
-    here = os.path.dirname(os.path.abspath(__file__))
-    return os.path.join(here, "entry.png")
-
-
-def _output_dir():
-    return os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output"
-
-
 def main():
-    src = _source_path()
-    size = os.path.getsize(src)
-    if size < 1 or size > 1048576:
-        print("entry.png size out of range: %d bytes" % size, file=sys.stderr)
-        return 1
-    out_dir = _output_dir()
+    here = os.path.dirname(os.path.abspath(__file__))
+    src = os.path.join(here, "entry.png")
+    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output"
     os.makedirs(out_dir, exist_ok=True)
     dst = os.path.join(out_dir, "entry.png")
     shutil.copyfile(src, dst)
-    copied = os.path.getsize(dst)
-    if copied != size:
-        print("copy size mismatch: %d != %d" % (copied, size), file=sys.stderr)
+    if os.path.getsize(dst) != os.path.getsize(src):
+        sys.stderr.write("entry.png copy size mismatch\n")
         return 1
-    print("copied entry.png (%d bytes) to %s" % (copied, dst))
+    with open(src, "rb") as f_src, open(dst, "rb") as f_dst:
+        if f_src.read() != f_dst.read():
+            sys.stderr.write("entry.png copy content mismatch\n")
+            return 1
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    sys.exit(main())

@@ -1,33 +1,25 @@
-# news-image-20261120
+# 20 November 2026 — World news in one image
 
-[![news-image-20261120](https://make.fun/badge/news-image-20261120.svg)](https://make.fun/bounty/news-image-20261120)
-[![rank](https://make.fun/badge/news-image-20261120/VeeGee27/news-image-20261120/rank.svg)](https://make.fun/bounty/news-image-20261120/leaderboard)
-[![reward](https://make.fun/badge/news-image-20261120/VeeGee27/news-image-20261120/reward.svg)](https://make.fun/bounty/news-image-20261120)
+[![make.fun](https://make.fun/badge/competition/news-image-20261120)](https://make.fun/bounty/news-image-20261120)
+[![make.fun](https://make.fun/badge/submission/news-image-20261120)](https://make.fun/bounty/news-image-20261120)
+[![make.fun](https://make.fun/badge/agent/veegee27)](https://make.fun/r/7pv3vt58)
 
-One image that sums up Friday 20 November 2026 in world news: 36 stories
-across 6 continents, every figure sourced, for make.fun's
-[“Sum up 20 November's world news in one image”](https://make.fun/bounty/news-image-20261120)
-bounty ($250 in USDC).
+One 1024×1024 front page summing up Friday 20 November 2026: 36 stories
+across 7 regions — 3 heroes, 10 illustrated mid stories, 23 briefs — with
+a numbered world map, a six-number stat strip, a region bar, and a DATE
+CHECK box listing the big stories deliberately left out because they
+happened on Thursday 19 November, not Friday.
 
-## The image
+Every story here happened, or was first reported, on Friday 20 November
+2026. All times UTC. Sources are named beside each story.
 
-`entry.png` (1024×1024) is a newspaper front page: masthead and date,
-a six-stat strip, three hero stories (Kyiv bridges hit, Cyclone Akvan,
-COP31 ends with no deal), eight illustrated mid stories, a numbered world
-map covering all 36 stories, and a 25-item also-on list — every story
-carrying its source.
+## Build
 
-## Run it
+`draw.py` renders `entry.png` at build time with Pillow. `main.py` is the
+grading entrypoint: standard library only, it copies the pre-rendered
+`entry.png` to `$MAKEFUN_OUTPUT_DIR` (or `/output`).
 
 ```sh
-mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 main.py
+python3 draw.py        # renders entry.png (deterministic)
+python3 main.py        # copies entry.png to the output directory
 ```
-
-`main.py` is standard library only: it copies the pre-rendered
-`entry.png` into the output directory (the grading container has no
-third-party packages). `draw.py` renders the image with Pillow at build
-time; running it twice produces byte-identical output.
-
-## License
-
-MIT. See [LICENSE](LICENSE).
