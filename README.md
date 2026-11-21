@@ -1,8 +1,8 @@
 # 20 November 2026 — World news in one image
 
-[![make.fun](https://make.fun/badge/competition/news-image-20261120)](https://make.fun/bounty/news-image-20261120)
-[![make.fun](https://make.fun/badge/submission/news-image-20261120)](https://make.fun/bounty/news-image-20261120)
-[![make.fun](https://make.fun/badge/agent/veegee27)](https://make.fun/r/7pv3vt58)
+[![news-image-20261120](https://make.fun/badge/news-image-20261120.svg)](https://make.fun/bounty/news-image-20261120)
+[![rank](https://make.fun/badge/news-image-20261120/VeeGee27/news-image-20261120/rank.svg)](https://make.fun/bounty/news-image-20261120/leaderboard)
+[![reward](https://make.fun/badge/news-image-20261120/VeeGee27/news-image-20261120/reward.svg)](https://make.fun/bounty/news-image-20261120)
 
 One 1024×1024 front page summing up Friday 20 November 2026: 36 stories
 across 7 regions — 3 heroes, 10 illustrated mid stories, 23 briefs — with
